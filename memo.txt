@@ -1,0 +1,47 @@
+#summary(subset(telecom_2,FLAG_RESIL=='RESIL_OUI')$MOY_TU)
+
+#telecom_4 <- subset(telecom_3, !is.na(CLASS_TU) & !is.na(CLASS_DEP) & !is.na(CLASS_VAR))
+
+#telecom_4=data.frame(FLAG_RESIL=telecom_3$FLAG_RESIL, CLASS_AGE=telecom_3$CLASS_AGE)
+
+#telecom_4=data.frame(FLAG_RESIL=telecom_3$FLAG_RESIL, CLASS_OFFRE=telecom_3$CLASS_OFFRE, CLASS_DEP = telecom_3$CLASS_DEP, CLASS_VAR = telecom_3$CLASS_VAR)
+#subset(telecom_4, !is.na(CLASS_TU) & !is.na(CLASS_DEP) & !is.na(CLASS_VAR))
+
+#t4 = telecom_3[1:9000,];
+#glm = glm(t4 , family =binomial("logit"));
+#
+#rownames(coord)[which(dist2 < 0.5)]
+#d2 = distance_par_modal(coord,1)
+#rownames(mca$var$coord)[which(distance_par_modal(mca$var$coord,1) < 0.5)]
+
+# summary(subset(
+	# telecom_3,
+	  # CLASS_OFFRE    == 'O1O2'         | CLASS_DEP    == 'NO_DEP' 
+	# | CLASS_HORS_FFT == 'HORS_FFT_OUI' | CLASS_QT_M1 == 'APPEL_M1'
+	# | CLASS_QT_M2    == 'APPEL_M2'     | CLASS_QT_M3 == 'APPEL_M3'
+	# | CLASS_TYP_VAR  == 'PEU_VAR'
+	# | CHOIX_OFFRE    == 'CHOIXOUI'   
+	# )$FLAG_RESIL);
+	
+# summary(subset(
+# telecom_3,
+  # CLASS_OFFRE    == 'O1O2'         | CLASS_DEP    == 'NO_DEP' 
+# | CLASS_HORS_FFT == 'HORS_FFT_OUI' | CLASS_QT_M1 == 'APPEL_M1'
+# | CLASS_QT_M2    == 'APPEL_M2'     | CLASS_QT_M3 == 'APPEL_M3'
+# | CLASS_TYP_VAR  == 'PEU_VAR'
+# | CHOIX_OFFRE    == 'CHOIXOUI'   
+# )$FLAG_RESIL);
+
+# t= subset(
+# telecom_3,
+  # CLASS_OFFRE    == 'O1O2'         | CLASS_DEP    == 'NO_DEP' 
+# | CLASS_HORS_FFT == 'HORS_FFT_OUI' | CLASS_QT_M1 == 'APPEL_M1'
+# | CLASS_QT_M2    == 'APPEL_M2'     | CLASS_QT_M3 == 'APPEL_M3'
+# | CLASS_TYP_VAR  == 'PEU_VAR'
+# | CHOIX_OFFRE    == 'CHOIXOUI'   
+# )
+
+#plot(t[,2], type='h',lwd=10, col='dark blue')
+#barplot(t[,2])
+
+#Ecrire fonction pour dessiner des 
