@@ -578,3 +578,15 @@ info_quanti <- function (ressource,titre)
 	}
 	dev.off()
 }
+
+#
+#renvoie les modalités qui ont une distance à "#indice_mod" inférieur à "#distance" 
+#
+#Paramètres:
+#mca        : MCA du tableau de données (exemple : mca(telecom_3)
+#indice_mod : indique l'indice pour lequel calculer la distance
+#distance   : Distance entière
+getModalites <- function (mca, indice_mod, distance)
+{
+	return (rownames(mca$var$coord)[which(distance_par_modal(mca$var$coord, indice_mod) < distance)])
+}
