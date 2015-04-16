@@ -1,47 +1,37 @@
-#summary(subset(telecom_2,FLAG_RESIL=='RESIL_OUI')$MOY_TU)
 
-#telecom_4 <- subset(telecom_3, !is.na(CLASS_TU) & !is.na(CLASS_DEP) & !is.na(CLASS_VAR))
+Regression Linéaire
+glm = glm(t4 , family =binomial("logit"));
 
-#telecom_4=data.frame(FLAG_RESIL=telecom_3$FLAG_RESIL, CLASS_AGE=telecom_3$CLASS_AGE)
+Pour afficher un résumé de n'importe quel variable : "summary"
 
-#telecom_4=data.frame(FLAG_RESIL=telecom_3$FLAG_RESIL, CLASS_OFFRE=telecom_3$CLASS_OFFRE, CLASS_DEP = telecom_3$CLASS_DEP, CLASS_VAR = telecom_3$CLASS_VAR)
-#subset(telecom_4, !is.na(CLASS_TU) & !is.na(CLASS_DEP) & !is.na(CLASS_VAR))
+Pour calculer la distance pour toutes les modalités, voir fonction "distance_par_modal" dans "init.r"
 
-#t4 = telecom_3[1:9000,];
-#glm = glm(t4 , family =binomial("logit"));
-#
-#rownames(coord)[which(dist2 < 0.5)]
-#d2 = distance_par_modal(coord,1)
-#rownames(mca$var$coord)[which(distance_par_modal(mca$var$coord,1) < 0.5)]
+Pour afficher les modalités qui sont les plus proches, voir fonction "getModalites" dans "init.r"
 
-# summary(subset(
-	# telecom_3,
-	  # CLASS_OFFRE    == 'O1O2'         | CLASS_DEP    == 'NO_DEP' 
-	# | CLASS_HORS_FFT == 'HORS_FFT_OUI' | CLASS_QT_M1 == 'APPEL_M1'
-	# | CLASS_QT_M2    == 'APPEL_M2'     | CLASS_QT_M3 == 'APPEL_M3'
-	# | CLASS_TYP_VAR  == 'PEU_VAR'
-	# | CHOIX_OFFRE    == 'CHOIXOUI'   
-	# )$FLAG_RESIL);
-	
-# summary(subset(
-# telecom_3,
-  # CLASS_OFFRE    == 'O1O2'         | CLASS_DEP    == 'NO_DEP' 
-# | CLASS_HORS_FFT == 'HORS_FFT_OUI' | CLASS_QT_M1 == 'APPEL_M1'
-# | CLASS_QT_M2    == 'APPEL_M2'     | CLASS_QT_M3 == 'APPEL_M3'
-# | CLASS_TYP_VAR  == 'PEU_VAR'
-# | CHOIX_OFFRE    == 'CHOIXOUI'   
-# )$FLAG_RESIL);
+Pour afficher la liste des colonnes, rownames(dataframe)
 
-# t= subset(
-# telecom_3,
-  # CLASS_OFFRE    == 'O1O2'         | CLASS_DEP    == 'NO_DEP' 
-# | CLASS_HORS_FFT == 'HORS_FFT_OUI' | CLASS_QT_M1 == 'APPEL_M1'
-# | CLASS_QT_M2    == 'APPEL_M2'     | CLASS_QT_M3 == 'APPEL_M3'
-# | CLASS_TYP_VAR  == 'PEU_VAR'
-# | CHOIX_OFFRE    == 'CHOIXOUI'   
-# )
+Exemple d'utilisations:
+rownames(telecom_2)
 
+Pour compter le nombre de ligne d'un dataframe, il faut utiliser la fonction : nrow()
+Pour compter le nombre de colonne d'un dataframe, il faut utiliser la fonction : ncol()
+
+Pour filtrer des données dans un dataframe, subset est une fonction utile, il permet selon le format suivant de filtrer un tableau sur une colonne:
+Il s'utilise de la manière suivante:
+
+Format:
+subset (dataframe, condition1 & condition2 & condition3 ....) 
+
+PS:
+& -> représente un "et" logique
+| -> représente un "ou" logique
+
+Exemple d'utilisation:
+subset(telecom_2, FLAG_RESIL == 'RESIL_OUI'); -> renvoie tous les individus qui ont résilié leur abonnement
+subset(telecom_2, FLAG_RESIL == 'RESIL_OUI' & AGE > 30); -> renvoie tous les individus qui ont résilié leur abonnement et qui on un age supérieur à 30
+
+
+Pour afficher un tableau en barre, on peut utiliser les requêtes suivantes:
 #plot(t[,2], type='h',lwd=10, col='dark blue')
 #barplot(t[,2])
-
-#Ecrire fonction pour dessiner des 
+ 
