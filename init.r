@@ -3,14 +3,15 @@ library(rpart)
 library(lattice)
 library(FactoMineR)
 
+dirdonnee = "donnee";
 #chargement de toutes les données (automatique à chaque chargement du fichier)
-base <- read.table("telecom.csv", header = TRUE,sep=";");
+base <- read.table(paste(dirdonnee,"telecom.csv",sep="\\"), header = TRUE,sep=";");
 telecom = data.frame(base);
 
-base2 <- read.table("telecom_2.csv", header = TRUE,sep=";");
+base2 <- read.table(paste(dirdonnee,"telecom_2.csv",sep="\\"), header = TRUE,sep=";");
 telecom_2 = data.frame(base2);
 
-base3 <- read.table("telecom_3.csv", header = TRUE,sep=";");
+base3 <- read.table(paste(dirdonnee,"telecom_3.csv",sep="\\"), header = TRUE,sep=";");
 telecom_3 = data.frame(base3);
 
 #ID_CLIENT;FLAG_RESIL;DATE_ACTIVATION;DATE_NAISSANCE;OFFRE;NB_SERVICES;
@@ -116,7 +117,7 @@ create_indicateur <- function()
 	telecom = subset(telecom, 15 <= AGE & AGE <= 79 & difftime (as.Date('2010-12-31'),as.Date(telecom$DATE_ACTIVATION, '%d/%m/%Y'), units="auto") > 90);
 	
 	#print ("NB LIGNE : ",nrow(telecom))
-	write.table(telecom,file="telecom_2.csv",row.names=TRUE,col.names=TRUE,sep=";");
+	write.table(telecom,file=paste(dirdonnee,"telecom_2.csv",sep="\\"),,row.names=TRUE,col.names=TRUE,sep=";");
 	source("init.r");
 }
 
@@ -183,7 +184,7 @@ create_class2 <- function(base)
 	
 	resultat_2 = subset(resultat, CLASS_TU != 'NA' & CLASS_DEP != 'NA');
 	
-	write.table(resultat_2,file="telecom_3.csv",row.names=TRUE,col.names=TRUE,sep=";");
+	write.table(resultat_2,file=paste(dirdonnee,"telecom_3.csv",sep="\\"),,row.names=TRUE,col.names=TRUE,sep=";");
 	source("init.r");
 }
 
@@ -366,7 +367,7 @@ create_class <- function(base)
 	
 	resultat_2 = subset(resultat, CLASS_TU != 'NA' & CLASS_DEP != 'NA' & CLASS_VAR != 'NA');
 	
-	write.table(resultat_2,file="telecom_3.csv",row.names=TRUE,col.names=TRUE,sep=";");
+	write.table(resultat_2,file=paste(dirdonnee,"telecom_3.csv",sep="\\"),,row.names=TRUE,col.names=TRUE,sep=";");
 	source("init.r");
 }
 
