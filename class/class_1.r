@@ -93,4 +93,25 @@ resultat$CLASS_TU = as.character(lapply(telecom_2$MOY_TU,function(x){
 	return (classe);
 }));
 
+print("Construction CLASS_NBAPPELS")
+resultat$CLASS_NBAPPELS = as.character(lapply(telecom_2$TOTAL_APPEL,function(x){
+	classe = "";
+	if      (is.na(x))   {classe   = 'NBNA';}
+	else if (x <= 10000) {classe   = 'NBA1';}
+	else if (x <= 35000) {classe   = 'NBA2';}
+	else                 {classe   = 'NBA3';}
+	return (classe);
+}));
+
+print("Construction CLASS_NBAPPELS_HF")
+resultat$CLASS_NBAPPELS = as.character(lapply(telecom_2$TOTAL_HORS_FFT,function(x){
+	classe = "";
+	if      (is.na(x))  {classe   = 'NB_HF_NA';}
+	else if (x == 0)    {classe   = 'NB_HF_0';}
+	else if (x <= 2000) {classe   = 'NB_HF_1';}
+	else if (x <= 4000) {classe   = 'NB_HF_2';}
+	else                {classe   = 'NB_HF_3';}
+	return (classe);
+}));
+
 write.table(resultat,file="class/class_1.csv",row.names=TRUE,col.names=TRUE,sep=";");
