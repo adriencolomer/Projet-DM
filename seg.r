@@ -62,4 +62,27 @@ vd  = cut(telecom_2$POVAR, breaks=vec)
 info_for_pdf (vd,telecom_2$FLAG_RESIL, "POVAR seg4")
 
 #Je pense qu'il vaut mieux utiliser le segmentation 3 - la segmentation 4 montre peu de différence entre -1 et 1. Il ya juste une forte variation de la fréquence
+
+#Analyse de la variable TOTAL_APPEL a t'elle une incidence sur la résiliation?
+vec = union(c(0,500), seq(0,50,by=5))
+vd  = cut(telecom_2$TOTAL_APPEL/1000, breaks=vec)
+info_for_pdf (vd,telecom_2$FLAG_RESIL, "TOTAL_APPEL seg1")
+
+#En observant les tableaux générés, on remarque: 
+#- Que plus le nombre d'appel est faible, et plus il y a des chances que le consomateur résilie (passage de 0.40 à 0.1)
+#- Que le palier [0;10] totalise à eux seule plus de 30 à 40 % des résiliations alors qu'il ne représente que 2 000 individus
+#- Qu'il existe une autre classe de [10;35], situe entre 20 et 10 % des résiliés
+#- Le nombre d'appel élevé (inférieur à 10%)
+
+vec = union(c(0,500), seq(0,10,by=1))
+t = subset(telecom_2, TOTAL_APPEL <= 10000)
+vd  = cut(t$TOTAL_APPEL/1000, breaks=vec)
+info_for_pdf (vd,t$FLAG_RESIL, "TOTAL_APPEL [0;10] seg2")
+
+#Entre [0;10], rien n'est significatif, il ya moins de 300 individus dans chaque colonne
+
+vec = c(0,10,35,500)
+vd  = cut(telecom_2$TOTAL_APPEL/1000, breaks=vec)
+info_for_pdf (vd,telecom_2$FLAG_RESIL, "TOTAL_APPEL seg3")
+
 dev.off()
