@@ -1,19 +1,19 @@
 # Projet-DM
 
 Le projet est organisé de la manière suivante:
-- class (contient tous les essais de segmentation pour construire les différents modèles)
-   -class_x.pdf -> contient le rapport représentant tous les graphes de la tentative x de modèle
-   -class_x.csv -> contient le données de la tentative x de modèle
-   -class_x.r     -> contient les instructions pour construire la tentative x de modèle à partir de la base telecom_2
+	- class (contient tous les essais de segmentation pour construire les différents modèles)
+	-class_x.pdf -> contient le rapport représentant tous les graphes de la tentative x de modèle
+	-class_x.csv -> contient le données de la tentative x de modèle
+	-class_x.r     -> contient les instructions pour construire la tentative x de modèle à partir de la base telecom_2
       
 - doc (contient les documents permettant de vous aider à utiliser R)
 
 - donnee (contient toutes les données du projet)
-   - telecom.csv (fichier de données source sans modification)
-   - telecom_2.csv (fichier de données avec des indicateurs rajoutés en plus)
-   - telecom_3.csv (fichier contenant les données avec des classes à utiliser pour construire le modèle)
+	- telecom.csv (fichier de données source sans modification)
+	- telecom_2.csv (fichier de données avec des indicateurs rajoutés en plus)
+	- telecom_3.csv (fichier contenant les données avec des classes à utiliser pour construire le modèle)
 - rapport (contient tous les rapports générés par R du projet)
-   - rapport.pdf (rapport pdf contenant toutes les graphes dessinés lors des essais de la segmentation)
+	- rapport.pdf (rapport pdf contenant toutes les graphes dessinés lors des essais de la segmentation)
    
 - init.r (contient les comptines de bases pour étudier le modèle) - c'est le premier fichier à charger
 
