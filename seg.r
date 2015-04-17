@@ -85,4 +85,33 @@ vec = c(0,10,35,500)
 vd  = cut(telecom_2$TOTAL_APPEL/1000, breaks=vec)
 info_for_pdf (vd,telecom_2$FLAG_RESIL, "TOTAL_APPEL seg3")
 
+#Segmentation TOTAL_HORS_FFT seg1
+vec = union(c(-1,500), seq(0,50,by=5))
+vd  = cut(telecom_2$TOTAL_HORS_FFT/1000, breaks=vec)
+info_for_pdf (vd,telecom_2$FLAG_RESIL, "TOTAL_APPEL_FFT seg1")
+
+#En observant les tableaux générés, on remarque:
+#- Plus de 6000 individus compris entre 0;10
+#- On remarque l'apparition de trois classe [0] [0;10][10;500]
+
+#Segmentation TOTAL_HORS_FFT seg2 [0;10] car plus de 6000 individu compris [0;10]
+vec = c(-1,0,seq(1,10,by=1))
+tab = subset (telecom_2, TOTAL_HORS_FFT < 10000);
+vd  = cut(tab$TOTAL_HORS_FFT/1000, breaks=vec)
+info_for_pdf (vd,tab$FLAG_RESIL, "TOTAL_APPEL_FFT [0;10] seg2")
+
+#Segmentation TOTAL_HORS_FFT seg3 plus fine
+vec = sort(union(c(-1,500), seq(0,50,by=2)))
+vd  = cut(telecom_2$TOTAL_HORS_FFT/1000, breaks=vec)
+info_for_pdf (vd,telecom_2$FLAG_RESIL, "TOTAL_APPEL_FFT seg3")
+
+#En observant les tableaux générés, on remarque:
+# une classe TOTAL_HORS_FORFAIT == 0
+# une classe [0;2]
+# une classe [4;6]
+# une classe [6;+++] mais en regardant on se rend compte que [4;6] = [6;+++]
+vec = c(-1,0,2,4,100)
+vd  = cut(telecom_2$TOTAL_HORS_FFT/1000, breaks=vec)
+info_for_pdf (vd,telecom_2$FLAG_RESIL, "TOTAL_APPEL_FFT seg4")
+
 dev.off()
