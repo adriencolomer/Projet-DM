@@ -30,7 +30,7 @@ resultat$CLASS_OFFRE = as.character(lapply(telecom_2$OFFRE,function(x){
 	return (class_offre);
 }));
 
-print("Construction CLASS_DEP 2");
+print("Construction CLASS_DEP");
 resultat$CLASS_DEP = as.character(lapply(telecom_2$MOY_DEP_FR,function(x){
 	classe = "";
 	if (is.na (x))      {classe = NA;}
