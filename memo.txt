@@ -35,3 +35,7 @@ Pour afficher un tableau en barre, on peut utiliser les requêtes suivantes:
 #plot(t[,2], type='h',lwd=10, col='dark blue')
 #barplot(t[,2])
  
+ 
+summaryBy(val ~ lab, fr, FUN = c(mean, sd, length))
+
+ftable(xtabs( ~ FLAG_RESIL + OFFRE + NB_SERVICES, telecom_2))
