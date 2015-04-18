@@ -2,6 +2,7 @@
 library(rpart)
 library(lattice)
 library(FactoMineR)
+library(doBy)
 
 dirdonnee = "donnee";
 #chargement de toutes les données (automatique à chaque chargement du fichier)
@@ -376,7 +377,7 @@ create_class <- function(base)
 #
 generate_arbre <- function(base)
 {
-	y <- 2*nrow(base)/10
+	y <- 1*nrow(base)/10
 	base_appr <- base[y:nrow(base),]
 	base_test <- base[1:y-1,]
 
@@ -385,7 +386,7 @@ generate_arbre <- function(base)
 	
 	mc <<- table(base_test$FLAG_RESIL,predi)
 	erreur <<- (mc[2,1]+mc[1,2])/sum(mc)
-	print(erreur)
+	return (erreur)
 }
 
 #
@@ -576,6 +577,10 @@ info_quanti <- function (ressource,titre)
 		print(summary(table(ressource[,colname], ressource$FLAG_RESIL)))
 		print('')
 	}
+	
+	generate_arbre(ressource)
+	plot(arbre)
+	text(arbre)
 	dev.off()
 }
 
@@ -589,4 +594,9 @@ info_quanti <- function (ressource,titre)
 getModalites <- function (mca, indice_mod, distance)
 {
 	return (rownames(mca$var$coord)[which(distance_par_modal(mca$var$coord, indice_mod) < distance)])
+}
+
+reg_logis <- function (res)
+{
+	return (glm(res , family =binomial("logit")));
 }
