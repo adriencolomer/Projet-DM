@@ -114,4 +114,42 @@ vec = c(-1,0,2,4,100)
 vd  = cut(telecom_2$TOTAL_HORS_FFT/1000, breaks=vec)
 info_for_pdf (vd,telecom_2$FLAG_RESIL, "TOTAL_APPEL_FFT seg4")
 
+#Etude SD_DS_FFT
+vec = sort(union(c(-1,500), seq(0,60,by=6)))
+vd  = cut(telecom_2$SD_DS_FR/1000, breaks=vec)
+info_for_pdf (vd,telecom_2$FLAG_RESIL, "SD_DS_FR seg1")
+
+#On remarque:
+#la valeur 0 compte 1000 individus avec 0.20 de 0.4 prob
+#la valeur [0;6] compte 4000 individus avec 0.23 prob
+#la valeur [6;30] compte environs 2000 individus avec une prob de 0.10 et 0.20
+#le reste moins de probabilité
+
+vec = c(-1, 0,6,30,500)
+vd  = cut(telecom_2$SD_DS_FR/1000, breaks=vec)
+info_for_pdf (vd,telecom_2$FLAG_RESIL, "SD_DS_FR seg2")
+
+#Etude 2 (fusion de [6;30] avec [30;500] car [30;500] très petit
+vec = c(-1, 0,6,500)
+vd  = cut(telecom_2$SD_DS_FR/1000, breaks=vec)
+info_for_pdf (vd,telecom_2$FLAG_RESIL, "SD_DS_FR seg3")
+
+#Etude 3 [0;6] représente 4000 individus je voudrais voir si on ne peut pas le diviser en 2 pour voir s'il représente quelque chose
+vec = c(-1, 0,3,6,500)
+vd  = cut(telecom_2$SD_DS_FR/1000, breaks=vec)
+info_for_pdf (vd,telecom_2$FLAG_RESIL, "SD_DS_FR seg4")
+
+#On peut fusionner [3;6] avec [6;500]
+#Etude de 0;3 représente quand même 3500 individus
+vec = c(-1, 0,1,2,3,500)
+vd  = cut(telecom_2$SD_DS_FR/1000, breaks=vec)
+info_for_pdf (vd,telecom_2$FLAG_RESIL, "SD_DS_FR seg5")
+
+#On peut fusionner [3;6] avec [6;500]
+#Segmentation finale
+vec = c(-1, 0,2,500)
+vd  = cut(telecom_2$SD_DS_FR/1000, breaks=vec)
+info_for_pdf (vd,telecom_2$FLAG_RESIL, "SD_DS_FR seg5")
+
+
 dev.off()

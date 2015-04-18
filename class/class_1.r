@@ -114,4 +114,14 @@ resultat$CLASS_NBAPPELS = as.character(lapply(telecom_2$TOTAL_HORS_FFT,function(
 	return (classe);
 }));
 
+print("Construction CLASS_SD_DS_FR")
+resultat$CLASS_SD_DS_FR = as.character(lapply(telecom_2$SD_DS_FR,function(x){
+	classe = "";
+	if      (is.na(x))  {classe   = 'NB_HF_NA';}
+	else if (x == 0)    {classe   = 'SD_DS_FT_0';}
+	else if (x <= 2000) {classe   = 'SD_DS_FT_1';}
+	else                {classe   = 'SD_DS_FT_2';}
+	return (classe);
+}));
+
 write.table(resultat,file="class/class_1.csv",row.names=TRUE,col.names=TRUE,sep=";");
